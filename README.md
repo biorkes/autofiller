@@ -1,5 +1,5 @@
 ### Autofiller
-Autofiller is a simple, ready to use javscript that fills in form inputs based on the key=value pairs from the URL.
+Autofiller is a tiny **~3kb**, simple, ready to use javscript that fills in form inputs based on the key=value pairs from the URL.
 
 ## Queries
 
