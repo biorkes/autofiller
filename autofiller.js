@@ -4,9 +4,9 @@
 
         var fid, elem, pof;
 
-        fid = urlParams.get('fid') !== null ? (urlParams.get('fid').length > 0 ? (document.getElementById(`${urlParams.get('fid')}`).length > 0 ? document.querySelectorAll(`#${urlParams.get('fid')} input`) : null) : null) : null;
+        fid = urlParams.get('fid') !== null ? (urlParams.get('fid').length > 0 ? (document.getElementById(`${urlParams.get('fid')}`).length > 0 ? document.querySelectorAll(`#${urlParams.get('fid')} input,#${urlParams.get('fid')} select`) : null) : null) : null;
         pof = urlParams.get('pof') !== null ? (urlParams.get('pof').length > 0 ? (document.getElementsByName(`${urlParams.get('pof')}`).length > 0 ? document.querySelector(`input[name="${urlParams.get('pof')}"]`).form : null) : null) : null;
-        ele = fid !== null ? fid : document.querySelectorAll(`#${pof.getAttribute("id")} input`);
+        ele = fid !== null ? fid : document.querySelectorAll(`#${pof.getAttribute("id")} input,#${pof.getAttribute("id")} select`);
 
         if (ele !== null) {
             if (urlParams.get('af') !== null) {
