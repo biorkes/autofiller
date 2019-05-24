@@ -4,9 +4,9 @@ $(document).ready(function(){
 
         var fid, elem, pof;
 
-        fid = urlParams.get('fid') !== null ? (urlParams.get('fid').length > 0 ? ($(`#${urlParams.get('fid')}`).length > 0 ? $(`#${urlParams.get('fid')} input`) : null) : null) : null;
+        fid = urlParams.get('fid') !== null ? (urlParams.get('fid').length > 0 ? ($(`#${urlParams.get('fid')}`).length > 0 ? $(`#${urlParams.get('fid')} input, #${urlParams.get('fid')} select`) : null) : null) : null;
         pof = urlParams.get('pof') !== null ? (urlParams.get('pof').length > 0 ? ($(`input[name="${urlParams.get('pof')}"]`).length > 0 ? $(`input[name="${urlParams.get('pof')}"]`).parents('form').attr('id') : null) : null) : null;
-        ele = fid !== null ? fid : $(`#${pof} input`);
+        ele = fid !== null ? fid : $(`#${pof} input, #${pof} select`);
 
         if (ele !== null) {
             if (urlParams.get('af') !== null) {
