@@ -3,7 +3,8 @@ Autofiller is a simple, ready to use javscript that fills in form inputs based o
 
 ## Queries
 
-Every input you need to fill in must have a name attribute matching to a key from the queries. 
+Every input you need to fill in must have a name attribute matching to a key from the queries.
+
 **?phone=12345** - find an input with name "phone" and change its value to "12345"
 **?email=john@gmail.com&name=John%20Doe&city=Paris** - find inputs with name "email","name","city" and change their values according to the **key=value** pairs
 
