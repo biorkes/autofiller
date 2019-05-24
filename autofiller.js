@@ -1,44 +1,29 @@
 var urlParams = new URLSearchParams(window.location.search);
-var form_id = urlParams.get('form_id');
-var obj = urlParams.get('not');
-var excl = obj.split('+');
-var parent = urlParams.get('pt') !== 'NULL' ? urlParams.get('pt') : 0;
-var parent_of = urlParams.get('ptof') !== 'NULL' && parent === 0 ? urlParams.get('ptof') : 0;
+if (urlParams.get('autofiller') == 1) {
 
-var str;
-var types = { tbn: ':not([type=button])', tcx: ':not([type=checkbox])', tcr: ':not([type=color])', tde: ':not([type=date])', tdl: ':not([type=datetime-local])', tel: ':not([type=email])', tfe: ':not([type=file])', thn: ':not([type=hidden])', tie: ':not([type=image])', tmh: ':not([type=month])', tnr: ':not([type=number])', tpd: ':not([type=password])', tro: ':not([type=radio])', tre: ':not([type=range])', trt: ':not([type=reset])', tsh: ':not([type=search])', tst: ':not([type=submit])', ttl: ':not([type=tel])', ttt: ':not([type=text])', tte: ':not([type=time])', tul: ':not([type=url])', twk: ':not([type=week])' };
-excl.each(function() {
-    if (types.includes($(this))) {
-        str += types[$(this)];
-    }
-});
-console.log(str)
-eid = on click fill
-af = 0 - enables eid by
-default on
-fid = order_form
-pof = email
+    var fid, elem, pof;
 
-var urlParams = new URLSearchParams(window.location.search);
-var formElement = urlParams.get('fid') !== 'NULL' ? urlParams.get('fid') : (urlParams.get('pof') !== 'NULL' ? $(`#$('input[name="urlParams.get('pof')"]').parents('form').attr('id')}`) : alert('Error'));
-if (urlParams.get('af') != 0) {
-    if (urlParams.get('eid') !== 'NULL' && $(`#${urlParams.get('eid')}`).length !== 0) {
-        $(`#${urlParams.get('eid')}`).on('click', function() { $(`#${formElement} input`).each(function() { $(this).val(urlParams.get($(this).attr('name'))) }) })
+    fid = urlParams.get('fid') !== null ? (urlParams.get('fid').length > 0 ? (document.getElementById(`${urlParams.get('fid')}`).length > 0 ? document.querySelectorAll(`#${urlParams.get('fid')} input`) : null) : null) : null;
+    pof = urlParams.get('pof') !== null ? (urlParams.get('pof').length > 0 ? (document.getElementsByName(`${urlParams.get('pof')}`).length > 0 ? document.querySelector(`input[name="${urlParams.get('pof')}"]`).form : null) : null) : null;
+    ele = fid !== null ? fid : document.querySelectorAll(`#${pof.getAttribute("id")} input`);
+
+    if (ele !== null) {
+        if (urlParams.get('af') !== null) {
+            ele.forEach(function(element) {
+                element.value = urlParams.get(element.getAttribute("name"));
+            })
+        } else {
+            if (urlParams.get('eid') !== null && document.getElementById(`${urlParams.get('eid')}`).length > 0) {
+                document.getElementById(`${urlParams.get('eid')}`).onclick = function() {
+                    ele.forEach(function(element) {
+                        element.value = urlParams.get(element.getAttribute("name"));
+                    })
+                };
+            } else {
+                console.log('Erorr! No Event ID Click provided');
+            }
+        }
     } else {
-        $(`#${formElement} input`).each(function() { $(this).val(urlParams.get($(this).attr('name'))) })
+        console.log('Invalid Selectors');
     }
-}
-
-$(`#${$(`input[name="${urlParams.get('pof')}"]`).parents('form').attr('id')} input`) 
-
-var urlParams = new URLSearchParams(window.location.search);
-var formElement = urlParams.get('fid') !== 'NULL' ? $(`${urlParams.get('fid')} input`) : (urlParams.get('pof') !== 'NULL' ? $(`#${$(`input[name="${urlParams.get('pof')}"]`).parents('form').attr('id')} input`) : alert('Error'));
-if (urlParams.get('af') != 0) {
-    $(`${formElement}`).each(function() { $(this).val(urlParams.get($(this).attr('name'))) })
-}else{
-	if (urlParams.get('eid') !== 'NULL' && $(`#${urlParams.get('eid')}`).length !== 0) {
-		$(`#${urlParams.get('eid')}`).on('click', function() { $(`#${formElement}`).each(function() { $(this).val(urlParams.get($(this).attr('name'))) }) })
-	}else{
-		alert('Erorr! No Event ID Click provided');
-	}
 }
