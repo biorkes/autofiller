@@ -42,7 +42,10 @@ Ex.
 There are two ways to define which form you want to fill in - by passing an ID of the Form `fid` (Form ID) or a child element of the form `pof` (Parent OF).
 
 `fid` - A Form id attribute
+
 `pof` - Pass the name of a child input to find the form
 
 Ex.
-**?fid=order_form** or **?pof=email**
+**?fid=order_form** - find the from with **id=order_form**
+
+**?pof=email** - find the form which contains input element with attribute **name=email**
