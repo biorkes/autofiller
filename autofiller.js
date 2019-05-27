@@ -11,21 +11,23 @@
         if (ele !== null) {
             if (urlParams.get('af') !== null) {
                 ele.forEach(function(element) {
+                  if(urlParams.get(element.getAttribute("name")) !== null){
                     element.value = urlParams.get(element.getAttribute("name"));
+                  }
                 })
             } else {
                 if (urlParams.get('eid') !== null && document.getElementById(`${urlParams.get('eid')}`).length > 0) {
                     document.getElementById(`${urlParams.get('eid')}`).onclick = function() {
-                        ele.forEach(function(element) {
-                            element.value = urlParams.get(element.getAttribute("name"));
-                        })
+                      if(urlParams.get(element.getAttribute("name")) !== null){
+                        element.value = urlParams.get(element.getAttribute("name"));
+                      }
                     };
                 } else {
-                    console.log('Erorr! No Event ID Click provided');
+                    console.error('You have to provide clickable element ID!');
                 }
             }
         } else {
-            console.log('Invalid Selectors');
+            console.error('Form with such ID was not found or input does not have a parent Form!');
         }
     }
 })();

@@ -11,21 +11,25 @@ $(document).ready(function(){
         if (ele !== null) {
             if (urlParams.get('af') !== null) {
                 ele.each(function() {
+                  if(urlParams.get($(this).attr('name')) !== null){
                     $(this).val(urlParams.get($(this).attr('name')));
+                  }
                 });
             } else {
                 if (urlParams.get('eid') !== null && $(`#${urlParams.get('eid')}`).length > 0) {
                     $(`#${urlParams.get('eid')}`).on('click', function() {
                         ele.each(function() {
+                          if(urlParams.get($(this).attr('name')) !== null){
                             $(this).val(urlParams.get($(this).attr('name')));
-                        })
+                          }
+                        });
                     });
                 } else {
-                    console.log('Erorr! No Event ID Click provided');
+                    console.error('You have to provide clickable element ID!');
                 }
             }
         } else {
-            console.log('Invalid Selectors');
+            console.error('Form with such ID was not found or input does not have a parent Form!');
         }
     }
 })
